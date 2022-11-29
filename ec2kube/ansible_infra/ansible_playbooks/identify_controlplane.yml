@@ -1,6 +1,6 @@
 - hosts: localhost
   gather_facts: yes
-  remote_user: root
+  remote_user: ec2-user
   become: true
   connection: local
   tasks:
