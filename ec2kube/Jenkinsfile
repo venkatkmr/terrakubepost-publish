@@ -118,6 +118,8 @@ pipeline{
                                         ansible --version
                                         cd ansible_infra
                                         cd ansible_playbooks
+                                        pwd
+                                        cat inv
                                         env
                                         ansible-playbook identify_controlplane.yml -i inv 
                                         cat inv
