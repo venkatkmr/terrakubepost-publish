@@ -12,7 +12,6 @@ pipeline{
         ANSIBLE_BUCKET_NAME="kubernetes-s3-bucket-tf"
     }
 
-
     stages{
         stage("Create Terraform State Buckets"){
             when{
