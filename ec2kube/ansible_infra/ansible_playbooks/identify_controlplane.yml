@@ -1,6 +1,8 @@
 - hosts: localhost
   gather_facts: yes
-  become: true
+  #become: true
+  become: yes
+  become_user: root
   connection: local
   tasks:
     - name: get ec2
