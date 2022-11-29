@@ -6,8 +6,8 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "<state_bucket>"
-    key    = "<state_key>"
+    bucket = "kubernetes-s3-bucket-tf"
+    key    = "node-tf.state"
     region = "us-east-1"
   }
 }
