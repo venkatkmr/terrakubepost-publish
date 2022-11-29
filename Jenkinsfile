@@ -117,7 +117,7 @@ pipeline{
                                         cd ec2kube/ansible_infra
                                         cd ansible_playbooks
                                         env
-                                        ansible-playbook identify_controlplane.yml -i inv
+                                        ansible-playbook identify_controlplane.yml -i inv --ask-become-pass
                                         cat inv
                                         """
                                         }
