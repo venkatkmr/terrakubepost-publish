@@ -1,6 +1,5 @@
 - hosts: localhost
   gather_facts: yes
-  remote_user: ec2-user
   become: true
   connection: local
   tasks:
@@ -26,7 +25,7 @@
     - name: add ansible user line
       lineinfile:
         path: ./inv
-        line: "ansible_user=ubuntu"
+        line: "ansible_user=ec2-user"
     - name: add ansible key line
       lineinfile:
         path: ./inv
