@@ -35,7 +35,7 @@ pipeline{
                         stage('Validate Ansible Infra'){
                             steps{
                                 sh '''
-                                cd ansible_infra
+                                cd ec2kube/ansible_infra
                                 terraform init
                                 terraform validate'''
                             }
@@ -43,7 +43,7 @@ pipeline{
                         stage('Deploy Ansible Infra'){
                             steps{
                                 sh '''
-                                cd ansible_infra
+                                cd ec2kube/ansible_infra
                                 terraform plan -out outfile
                                 terraform apply outfile'''
                             }
@@ -62,7 +62,7 @@ pipeline{
                         stage('Validate n/w Infra'){
                             steps{
                                 sh '''
-                                cd networking
+                                cd ec2kube/networking
                                 terraform init
                                 terraform validate'''
                             }
@@ -70,7 +70,7 @@ pipeline{
                         stage('Deploy n/w Infra'){
                             steps{
                                 sh '''
-                                cd networking
+                                cd ec2kube/networking
                                 terraform plan -out outfile
                                 terraform apply outfile'''
                             }
@@ -93,7 +93,7 @@ pipeline{
                         stage('Validate inst Infra'){
                             steps{
                                 sh '''
-                                cd instances
+                                cd ec2kube/instances
                                 terraform init
                                 terraform validate'''
                             }
@@ -101,7 +101,7 @@ pipeline{
                         stage('Deploy inst Infra'){
                             steps{
                                 sh '''
-                                cd instances
+                                cd ec2kube/instances
                                 terraform plan -out outfile
                                 terraform apply outfile'''
                             }
@@ -114,7 +114,7 @@ pipeline{
                                 script {
                                         sh """
                                         ansible --version
-                                        cd ansible_infra
+                                        cd ec2kube/ansible_infra
                                         cd ansible_playbooks
                                         env
                                         ansible-playbook identify_controlplane.yml -i inv
@@ -132,7 +132,7 @@ pipeline{
                     steps{
                         script {
                                     sh """
-                                    cd ansible_infra
+                                    cd ec2kube/ansible_infra
                                     cd ansible_role
                                     aws s3 cp s3://${env.ANSIBLE_BUCKET_NAME}/inv inv
                                     ls -a
@@ -148,7 +148,7 @@ pipeline{
                     steps{
                         script {
                                     sh """
-                                    cd ansible_infra
+                                    cd ec2kube/ansible_infra
                                     cd ansible_playbooks
                                     aws s3 cp s3://${env.ANSIBLE_BUCKET_NAME}/inv inv
                                     ansible-playbook testkubectl.yml -i inv                                    
@@ -177,7 +177,7 @@ pipeline{
                         stage('Validate asg Infra'){
                             steps{
                                 sh '''
-                                cd node_asg
+                                cd ec2kube/node_asg
                                 terraform init
                                 terraform validate'''
                             }
@@ -185,7 +185,7 @@ pipeline{
                         stage('Deploy asg Infra'){
                             steps{
                                 sh '''
-                                cd node_asg
+                                cd ec2kube/node_asg
                                 terraform plan -out outfile
                                 terraform apply outfile'''
                             }
@@ -200,7 +200,7 @@ pipeline{
                     steps{
                         script {
                                     sh """
-                                    cd ansible_infra
+                                    cd ec2kube/ansible_infra
                                     cd ansible_playbooks
                                     aws s3 cp s3://${env.ANSIBLE_BUCKET_NAME}/inv inv
                                     ansible-playbook main_kubeadm_token.yml -i inv    
@@ -219,7 +219,7 @@ pipeline{
                     steps{
                         script {
                                     sh """
-                                    cd ansible_infra
+                                    cd ec2kube/ansible_infra
                                     cd ansible_playbooks
                                     aws s3 cp s3://${env.ANSIBLE_BUCKET_NAME}/inv inv
                                     ansible-playbook identify_nodes.yml -i inv   
@@ -239,7 +239,7 @@ pipeline{
                     steps{
                         script {
                                     sh """
-                                    cd ansible_infra
+                                    cd ec2kube/ansible_infra
                                     cd ansible_role
                                     aws s3 cp s3://${env.ANSIBLE_BUCKET_NAME}/nodeinv nodeinv
                                     ls -a
@@ -261,7 +261,7 @@ pipeline{
                     steps{
                         script {
                                     sh """
-                                    cd ansible_infra
+                                    cd ec2kube/ansible_infra
                                     cd ansible_playbooks
                                     aws s3 cp s3://${env.ANSIBLE_BUCKET_NAME}/inv inv
                                     ansible-playbook testkubectl.yml -i inv                                    
@@ -282,7 +282,7 @@ pipeline{
                 stage("Destroy Ansible Infra"){
                     steps{
                         sh '''
-                            cd ansible_infra
+                            cd ec2kube/ansible_infra
                             terraform init
                             terraform destroy -auto-approve
                             '''
@@ -292,7 +292,7 @@ pipeline{
                 stage("Destroy instance Infra"){
                     steps{
                         sh '''
-                            cd instances
+                            cd ec2kube/instances
                             terraform init
                             terraform destroy -auto-approve
                             '''
@@ -302,7 +302,7 @@ pipeline{
                 stage("Destroy node Infra"){
                     steps{
                         sh '''
-                            cd node_asg
+                            cd ec2kube/node_asg
                             terraform init
                             terraform destroy -auto-approve
                             '''
@@ -312,7 +312,7 @@ pipeline{
                 stage("Destroy n/w Infra"){
                     steps{
                         sh '''
-                            cd networking
+                            cd ec2kube/networking
                             terraform init
                             terraform destroy -auto-approve
                             '''
