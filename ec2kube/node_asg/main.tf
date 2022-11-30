@@ -54,7 +54,7 @@ resource "aws_launch_configuration" "kube_node_launch_conf" {
   name_prefix   = "kube_node_launch_conf-"
   image_id      = "ami-0e472ba40eb589f49" #us-east-1
   instance_type = "t2.micro"
-  key_name = "terraform-admin.pem"
+  key_name = "terraform-admin"
   security_groups = [data.aws_security_group.kube_sg_id.id]
   associate_public_ip_address = true
 
