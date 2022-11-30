@@ -58,7 +58,7 @@ pipeline{
         stage("Deploy Networking"){
             when{
                     environment name:'TERRADESTROY',value:'N'
-                    environment name:'SKIP',value:'N'
+                    environment name:'SKIP',value:'Y'
                 }
              stages{
                         stage('Validate n/w Infra'){
