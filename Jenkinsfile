@@ -56,7 +56,7 @@ pipeline{
         stage("Deploy Networking"){
             when{
                     environment name:'TERRADESTROY',value:'N'
-                    environment name:'SKIP',value:'Y'
+                    environment name:'SKIP',value:'N'
                 }
              stages{
                         stage('Validate n/w Infra'){
@@ -127,7 +127,7 @@ pipeline{
                 }
                 stage("bootstrap instance"){
                     when{
-                                environment name:'SKIP',value:'Y'
+                                environment name:'SKIP',value:'N'
                             }
                     steps{
                         script {
