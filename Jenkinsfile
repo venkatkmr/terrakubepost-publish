@@ -279,6 +279,11 @@ pipeline{
                 environment name:'TERRADESTROY',value:'Y'
             }
             stages{
+                 stage("clen deployed infra"){
+                      when{
+                             environment name:'TERRADESTROY',value:'Y'
+                        }
+            stages{
                 stage("Destroy Ansible Infra"){
                     steps{
                         sh '''
