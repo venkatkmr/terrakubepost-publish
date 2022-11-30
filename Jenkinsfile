@@ -284,6 +284,7 @@ pipeline{
                              environment name:'TERRADESTROY',value:'Y'
                         }
               stages{
+                 stage("destroy ansible infra"){
                     steps{
                         sh '''
                             cd ec2kube/ansible_infra
@@ -335,7 +336,9 @@ pipeline{
                     }
                 }
             }
+                 }
             }
+            
         }
             
 
