@@ -274,7 +274,7 @@ pipeline{
 
 //         }       
 
-        stage("Run Destroy"){
+         stage("Run Destroy"){
             when{
                 environment name:'TERRADESTROY',value:'Y'
             }
@@ -283,8 +283,7 @@ pipeline{
                       when{
                              environment name:'TERRADESTROY',value:'Y'
                         }
-            stages{
-                stage("Destroy Ansible Infra"){
+              stages{
                     steps{
                         sh '''
                             cd ec2kube/ansible_infra
@@ -324,9 +323,7 @@ pipeline{
                     }
                 }
 
-                
-
-                
+                           
 
                 //next stage
 
@@ -338,7 +335,9 @@ pipeline{
                     }
                 }
             }
+            }
         }
+            
 
         //new stage from here
 
