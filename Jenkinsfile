@@ -127,7 +127,7 @@ pipeline{
                 }
                 stage("bootstrap instance"){
                     when{
-                                environment name:'SKIP',value:'N'
+                                environment name:'SKIP',value:'Y'
                             }
                     steps{
                         script {
