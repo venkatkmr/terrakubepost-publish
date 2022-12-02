@@ -6,8 +6,12 @@
     - name: get token
       command: kubeadm token create --print-join-command
       register: tokenout
-    - name: create file
-      local_action: copy content="{{tokenout.stdout}}" dest="{{playbook_dir}}/token_cmd.sh"
+     #- name: create file
+      #local_action: copy content="{{tokenout.stdout}}" dest="{{playbook_dir}}/token_cmd.sh"
+    - delegate_to: localhost
+      copy:
+        content: "{{tokenout.stdout}}"
+        dest: "{{playbook_dir}}/token_cmd.sh"
 
 
 - hosts: localhost
