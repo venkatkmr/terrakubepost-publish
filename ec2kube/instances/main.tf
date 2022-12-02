@@ -39,7 +39,7 @@ data "aws_security_group" "kube_sg_id" {
 
 resource "aws_key_pair" "kube_cp_key" {
   key_name   = "etkube-cp-instance-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmqmcI/O/8cdbFeDM82t9RaCu2SP/fdZa9REpVL/4WoGtycbnzoX7yrSBkZ916Yyq1ShGKwh7xv+It/T52NH6LZEndiVIm/VW5HhIqA/pPLiuye6KFQd43Z58diBEM7pGQbTbdt2zCr85ZHc8RATDbcBImbPSGw92emNvw3I741ybGGiqgiqM4nIvI2Ylpcae148kXrSFJdIqr6i6d3sRKLfXqds5ROhE4D3ocLs4N/SpxSoN2KpiYAq0njiRJ+e7bpy3x4dUQdE4GDkROkQDoMPskS/LRVKiUDybpOrCbJ3+hNEmv5niR9JbrZvrua+IjUzgVFRzJ1ghzvq1SUr8l root@ip-172-31-89-46.ec2.internal"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCflKxoaFiBSP/Kct/HFfDRjQW9LwX4Hy6SJ+jvcIUDxjoBey5UicT7UmRcCJajknge6dEFlHLXrb2LC2yYgZlsuktdPjykVqwbbrU1K7pBImAbkTRwr6aM/sS38Tc8sNEp+G6G71TwmjN5CALL9ao7LrVpbYPXpcveFkuaO907/Cqtmpjz/VCJdyFcWp7IvS/MtjhQjNLndZJ2b8X8NeEOO6M89c7uvnU9cEMm0Tp478OpGxEVIpdTpV26gS38d1aCOLLFu5CepJVNuH1oDmYSNOtOdvAd82nPGYdYiumBVOBPh5KMwD9smTmYBVzqQqzXzhgA+UZRd7W2KnGC4D0V terraform-admin"
 }
 
 
