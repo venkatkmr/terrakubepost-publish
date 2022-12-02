@@ -51,7 +51,7 @@ resource "aws_network_interface" "kube_instance_eni" {
 }
 
 resource "aws_instance" "kube_dash_instance" {
-  ami           = "ami-08c40ec9ead489470" # us-east-1
+  ami           = "ami-0149b2da6ceec4bb0" # us-east-1
   instance_type = "t3.medium"
 
   network_interface {
