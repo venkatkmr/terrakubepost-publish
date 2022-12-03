@@ -8,7 +8,8 @@
       register: tokenout
      #- name: create file
       #local_action: copy content="{{tokenout.stdout}}" dest="{{playbook_dir}}/token_cmd.sh"
-    - delegate_to: localhost
+    #- delegate_to: localhost
+    - name: create file
       connection: local
       remote_user: jenkins
       copy:
