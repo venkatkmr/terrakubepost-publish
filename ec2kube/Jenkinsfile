@@ -84,7 +84,7 @@ pipeline{
         stage("Deploy Controlplane"){
              when{
                     environment name:'TERRADESTROY',value:'N'
-                    environment name:'SKIP',value:'N'
+                    environment name:'SKIP',value:'Y'
                 }
             stages{
                 stage("deploy instance"){
