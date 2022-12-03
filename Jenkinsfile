@@ -127,7 +127,7 @@ pipeline{
                 }
                 stage("bootstrap instance"){
                     when{
-                                environment name:'SKIP',value:'Y'
+                                environment name:'SKIP',value:'N'
                             }
                     steps{
                         script {
@@ -234,7 +234,7 @@ pipeline{
 
                 stage("bootstrap instance"){
                     when{
-                                environment name:'SKIP',value:'Y'
+                                environment name:'SKIP',value:'N'
                             }
                     steps{
                         script {
@@ -276,7 +276,7 @@ pipeline{
 
         stage("Run Destroy"){
             when{
-                //environment name:'TERRADESTROY',value:'Y'
+                //environment name:'TERRADESTROY',value:'N'
                 environment name:'SKIP',value:'N'
             }
             
