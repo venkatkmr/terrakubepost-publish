@@ -276,14 +276,10 @@ pipeline{
 
         stage("Run Destroy"){
             when{
-                environment name:'TERRADESTROY',value:'Y'
+                //environment name:'TERRADESTROY',value:'Y'
                 environment name:'SKIP',value:'N'
             }
-            stages{
-                 stage("clen deployed infra"){
-                      when{
-                             environment name:'SKIP',value:'N'
-                        }
+            
               stages{
                  stage("destroy ansible infra"){
                     steps{
@@ -329,15 +325,15 @@ pipeline{
 
                 //next stage
 
-                stage("Destroy state bucket"){
-                    steps{
-                        sh '''
-                            aws s3 rb s3://<bucket_name> --force
-                            '''
-                    }
-                }
-            }
-                 }
+//                 stage("Destroy state bucket"){
+//                     steps{
+//                         sh '''
+//                             aws s3 rb s3://<bucket_name> --force
+//                             '''
+//                     }
+//                 }
+               }
+                 
             }
             
         }
