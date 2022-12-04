@@ -23,7 +23,7 @@ pipeline{
             }
             steps{
                 sh'''
-                aws s3 mb s3://<bucket_name>'''
+                aws s3 mb s3://kubernetes-s3-bucket-tf'''
                 
             }
         }
@@ -327,13 +327,13 @@ pipeline{
 
                 //next stage
 
-                stage("Destroy state bucket"){
-                    steps{
-                        sh '''
-                            aws s3 rb s3://<bucket_name> --force
-                            '''
-                    }
-                }
+               // stage("Destroy state bucket"){
+               //     steps{
+                //        sh '''
+                //            aws s3 rb s3://<bucket_name> --force
+                //            '''
+                //    }
+                //}
             }
         }
 
