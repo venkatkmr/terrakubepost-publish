@@ -131,7 +131,7 @@ pipeline{
                 }
                 stage("bootstrap instance"){
                     when{
-                                environment name:'SKIP',value:'N'
+                                environment name:'SKIP',value:'Y'
                             }
                     steps{
                         script {
@@ -238,7 +238,7 @@ pipeline{
 
                 stage("bootstrap instance"){
                     when{
-                                environment name:'SKIP',value:'N'
+                                environment name:'SKIP',value:'Y'
                             }
                     steps{
                         script {
@@ -280,7 +280,7 @@ pipeline{
 
         stage("Run Destroy"){
             when{
-                environment name:'TERRADESTROY',value:'Y'
+                environment name:'TERRADESTROY',value:'N'
             }
             stages{
                 stage("Destroy Ansible Infra"){
@@ -329,13 +329,13 @@ pipeline{
 
                 //next stage
 
-               // stage("Destroy state bucket"){
-               //     steps{
-                //        sh '''
-                //            aws s3 rb s3://<bucket_name> --force
-                //            '''
-                //    }
-                //}
+                stage("Destroy state bucket"){
+                    steps{
+                        sh '''
+                            aws s3 rb s3://${env.STATE_BUCKET} --force
+                            '''
+                    }
+                }
             }
         }
 
