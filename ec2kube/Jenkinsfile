@@ -118,7 +118,7 @@ pipeline{
                                 script {
                                         sh """
                                         ansible --version
-                                        cd ansible_infra
+                                        cd ec2kube/ansible_infra
                                         cd ansible_playbooks
                                         env
                                         ansible-playbook identify_controlplane.yml -i inv
