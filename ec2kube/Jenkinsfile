@@ -332,7 +332,7 @@ pipeline{
                 stage("Destroy state bucket"){
                     steps{
                         sh '''
-                            aws s3 rb s3://${env.STATE_BUCKET} --force
+                            aws s3 rb s3://kubernetes-s3-bucket-tf --force
                             '''
                     }
                 }
