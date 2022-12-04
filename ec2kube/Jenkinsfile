@@ -84,7 +84,7 @@ pipeline{
         stage("Deploy Controlplane"){
              when{
                     environment name:'TERRADESTROY',value:'N'
-                    environment name:'SKIP',value:'Y'
+                    environment name:'SKIP',value:'N'
                 }
             stages{
                 stage("deploy instance"){
@@ -118,10 +118,8 @@ pipeline{
                                         ansible --version
                                         cd ansible_infra
                                         cd ansible_playbooks
-                                        pwd
-                                        cat inv
                                         env
-                                        ansible-playbook identify_controlplane.yml -i inv 
+                                        ansible-playbook identify_controlplane.yml -i inv
                                         cat inv
                                         """
                                         }
@@ -281,7 +279,6 @@ pipeline{
         stage("Run Destroy"){
             when{
                 environment name:'TERRADESTROY',value:'Y'
-                environment name:'SKIP',value:'Y'
             }
             stages{
                 stage("Destroy Ansible Infra"){
@@ -330,13 +327,13 @@ pipeline{
 
                 //next stage
 
-//                 stage("Destroy state bucket"){
-//                     steps{
-//                         sh '''
-//                             aws s3 rb s3://<bucket_name> --force
-//                             '''
-//                     }
-//                 }
+                stage("Destroy state bucket"){
+                    steps{
+                        sh '''
+                            aws s3 rb s3://<bucket_name> --force
+                            '''
+                    }
+                }
             }
         }
 
