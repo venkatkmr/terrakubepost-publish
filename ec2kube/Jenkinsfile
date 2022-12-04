@@ -37,6 +37,7 @@ pipeline{
                         stage('Validate Ansible Infra'){
                             steps{
                                 sh '''
+                                pwd
                                 cd ansible_infra
                                 terraform init
                                 terraform validate'''
