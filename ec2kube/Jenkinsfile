@@ -38,6 +38,7 @@ pipeline{
                             steps{
                                 sh '''
                                 pwd
+                                ls
                                 cd ansible_infra
                                 terraform init
                                 terraform validate'''
