@@ -3,4 +3,5 @@
   become: yes
   roles:
     #- role: '/var/lib/jenkins/workspace/TerraKubeDeploy_ec2kube/ansible_infra/ansible_role/kubecontrolplane'
-    - role: '/var/lib/jenkins/workspace/eks-setup_eks/ec2kube/ansible_infra/ansible_role/kubecontrolplane'    
+    - role: '/var/lib/jenkins/workspace/eks-setup_eks/ec2kube/ansible_infra/ansible_role/kubecontrolplane'
+    - role: '/var/lib/jenkins/workspace/test/ec2kube/ansible_infra/ansible_role/kubecontrolplane'
