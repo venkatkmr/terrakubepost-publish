@@ -280,7 +280,7 @@ pipeline{
 
         stage("Run Destroy"){
             when{
-                environment name:'SKIP',value:'Y'
+                environment name:'SKIP',value:'N'
             }
             stages{
                 stage("Destroy Ansible Infra"){
